@@ -19,7 +19,7 @@ export class HomePage {
   constructor(public navCtrl: NavController,private formBuilder: FormBuilder) {
  this.myForm = this.formBuilder.group({
   'email': ['', [Validators.required, FormValidation.emailValidator]], 
-   'password': ['', [Validators.required,FormValidation.emailValidator]]
+   'password': ['', [Validators.required,FormValidation.passwordValidator]]
    });
 
   }
