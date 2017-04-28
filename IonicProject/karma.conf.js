@@ -3,8 +3,10 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['jasmine'],
     files: [
-      { pattern: 'test/1st.spec.ts'
-     }
+    //   { pattern: 'test/1st.spec.ts',
+    //  }
+    'test/1st.spec.ts',
+    'test/home.spec.ts'
     ],
     exclude: [
     ],
