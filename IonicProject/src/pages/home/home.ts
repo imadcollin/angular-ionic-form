@@ -4,6 +4,9 @@ import { NavController } from 'ionic-angular';
 //Import these Namespaces/Instances from angular forms 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+
+import { ControlMessagesComponent } from './home.messageController';
+import { FormValidation } from './home.validation';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -15,8 +18,7 @@ export class HomePage {
 /*Pass the instance to the constractor */ 
   constructor(public navCtrl: NavController,private formBuilder: FormBuilder) {
  this.myForm = this.formBuilder.group({
-      'email': ['', [Validators.required]],
-      'password': ['', Validators.required]
+  'email': ['', [Validators.required, FormValidation.emailValidator]],      'password': ['', Validators.required]
    });
 
   }
