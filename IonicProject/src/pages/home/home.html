@@ -13,9 +13,11 @@
 
   <label for="email">Email</label>
   <input formControlName="email" id="email" />
+  <control-messages [control]="myForm.controls.email"></control-messages>
 
   <label for="password">Password</label>
   <input formControlName="password" id="password" />
+  <control-messages [control]="myForm.controls.password"></control-messages>
 
   <button type="submit" [disabled]="!myForm.valid">Submit</button>
 </form>
