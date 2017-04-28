@@ -18,7 +18,8 @@ export class HomePage {
 /*Pass the instance to the constractor */ 
   constructor(public navCtrl: NavController,private formBuilder: FormBuilder) {
  this.myForm = this.formBuilder.group({
-  'email': ['', [Validators.required, FormValidation.emailValidator]],      'password': ['', Validators.required]
+  'email': ['', [Validators.required, FormValidation.emailValidator]], 
+   'password': ['', Validators.required,FormValidation.passwordValidator]
    });
 
   }
