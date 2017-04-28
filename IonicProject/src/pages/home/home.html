@@ -8,9 +8,15 @@
 
 <ion-content padding>
  <h1> Home Page </h1>
- <h3>Placeholders</h3>
 
- <p> Email </p>
- <p> Password </p>
- <p> Submit </p>
+<form [formGroup]="myForm">
+
+  <label for="email">Email</label>
+  <input formControlName="email" id="email" />
+
+  <label for="password">Password</label>
+  <input formControlName="password" id="password" />
+
+  <button type="submit" [disabled]="!myForm.valid">Submit</button>
+</form>
 </ion-content>
