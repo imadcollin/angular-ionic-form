@@ -28,3 +28,8 @@ npm install -g angular-cli
 ionic start advanced-forms blank --v2
 ```
 
+### Features 
+
+  - ionic platform add IOS is added 
+  - ionic platform add Android is added 
+  - Cross-platform had been taken into the consideration 
