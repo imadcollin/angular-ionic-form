@@ -53,6 +53,29 @@ describe('HTML Injection', function () {
     expect(emailValidator(x)).toBe(null);/* Not true x is 5 so return null */
   });
 
+  /**================================================================ *
+     * Email Validation testing  with regular expression 
+    =================================================================== */
+
+  /**
+   * TypeError: Cannot read property 'match' of undefined
+   * Match should be defined somehow here in order to use.
+   * Resualt : test failed 
+   */
+  it('it should return true for email null ', function () {
+    function emailValidator(control) {
+      /*run real test */
+      if (control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
+        return null;
+      } else {
+        return { 'invalidEmailAddress': true };
+      }
+    }
+    var x = document.getElementById('x').value = 5;
+
+    expect(emailValidator(x)).toBe(null);/* Not true x is 5 so return null */
+  });
+
 
 /**
  * Component testing not working properly 
