@@ -33,6 +33,8 @@ npm install -g typescript
 ```
 Clone the project from Github or Donwlaod it 
 ```
+#### Important OBS!!!
+>  Navigate to **IonicProject** 
 ```
 npm install 
 ```
@@ -50,7 +52,7 @@ npm install
 ionic serve
 ```
 
-Form different needs you can use one of the following depending on your needs:
+For different needs you can use one of the following depending on your needs:
 *  ionic build ios
 *  ionic run ios
 *  ionic run android
