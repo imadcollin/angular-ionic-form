@@ -75,6 +75,24 @@ describe('HTML Injection', function () {
 
     expect(emailValidator(x)).toBe(null);/* Not true x is 5 so return null */
   });
+  /**================================================================ *
+     * Email Validation test cases
+    =================================================================== */
+  //1. email@domain.com	 is  Valid email
+  //2. firstname+lastname@domain.com	Plus sign is considered valid character
+  //3. email@domain-one.com	Dash in domain name is valid
+  //4. irstname-lastname@domain.com	Dash in address field is valid
+  //5. 1234567890@domain.com	Digits in address are valid
+
+  /**================================================================ *
+     * Email Not valid  test cases
+    =================================================================== */
+  //1. plainaddress	Missing @ sign and domain
+  //2. @domain.com	Missing username
+  //3. email.domain.com	Missing @
+  //4. email..email@domain.com	Multiple dots
+  //5. email@domain..com	Multiple dot in the domain portion is invalid
+
 
 
 /**
