@@ -1,14 +1,14 @@
-  /**================================================================ *
-   * This is an initial test for Home page logic 
-  =================================================================== */
+/**================================================================ *
+ * This is an initial test for Home page logic 
+=================================================================== */
 describe('1st tests', () => {
   it('true is true', () => expect(true).toBe(true));
 });
 
 
- /**================================================================ *
-   * Inject the HTML fixture for the tests
-  =================================================================== */
+/**================================================================ *
+  * Inject the HTML fixture for the tests
+ =================================================================== */
 describe('HTML Injection', function () {
   beforeEach(function () {
     var fixture = '<div id="fixture"><input id="x" type="text">' +
@@ -24,7 +24,36 @@ describe('HTML Injection', function () {
   afterEach(function () {
     document.body.removeChild(document.getElementById('fixture'));
   });
-  
+
+  /**================================================================ *
+    * Email Validation testing 
+   =================================================================== */
+  let config = {
+    'required': 'Required',
+    'invalidEmailAddress': 'Invalid email address',
+    'invalidPassword': 'Invalid password. Password must be at least 6 characters long, and contain a number.'
+  };
+  // Check the mail function with null return value 
+  it('it should return true for email null ', function () {
+    function emailValidator(control) {
+      let config = {
+        'required': 'Required',
+        'invalidEmailAddress': 'Invalid email address',
+        'invalidPassword': 'Invalid password. Password must be at least 6 characters long, and contain a number.'
+      };
+      /*run stupid test */
+      if (control > 4) {
+        return null;
+      } else {
+        return { 'invalidEmailAddress': true };
+      }
+    }
+    var x = document.getElementById('x').value = 5;
+
+    expect(emailValidator(x)).toBe(null);/* Not true x is 5 so return null */
+  });
+
+
 /**
  * Component testing not working properly 
  * The problem was detected :
@@ -66,5 +95,5 @@ describe('HTML Injection', function () {
 //     //_formValidation. 
 //     expect(_homePage.myForm).toBeNull;
 //   });
- 
+
 // });
