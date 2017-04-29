@@ -1,6 +1,39 @@
+  /**================================================================ *
+   * This is an initial test for Home page logic 
+  =================================================================== */
 describe('1st tests', () => {
   it('true is true', () => expect(true).toBe(true));
 });
+
+
+ /**================================================================ *
+   * Inject the HTML fixture for the tests
+  =================================================================== */
+describe('HTML Injection', function () {
+  beforeEach(function () {
+    var fixture = '<div id="fixture"><input id="x" type="text">' +
+      '<input id="y" type="text">' +
+      '<input id="add" type="button" value="Add Numbers">' +
+      'Result: <span id="result" /></div>';
+
+    document.body.insertAdjacentHTML(
+      'afterbegin',
+      fixture);
+  });
+  // remove the html fixture from the DOM
+  afterEach(function () {
+    document.body.removeChild(document.getElementById('fixture'));
+  });
+  
+/**
+ * Component testing not working properly 
+ * The problem was detected :
+ * "uncaught referenceerror: exports is not defined"
+ * This error is related to typescript or ionic version 
+ * This bug was for many other people 
+ * for checking the document and reading about this please check this link 
+ * https://github.com/monounity/karma-typescript/issues/111
+ */
 
 // import { ComponentFixture, TestBed } from '@angular/core/testing';
 // import { By }              from '@angular/platform-browser';
