@@ -6,7 +6,8 @@ module.exports = function (config) {
     //   { pattern: 'test/1st.spec.ts',
     //  }
     'test/1st.spec.ts',
-    'test/home.spec.ts'
+    'test/home.spec.ts',
+    'test/home.spec.js'
     ],
     exclude: [
     ],
