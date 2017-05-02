@@ -31,6 +31,23 @@ it('it should return true  Valid email  ', function () {
 });
 
   /**================================================================ *
+    //2. firstname+lastname@domain.com	Plus sign is considered valid character
+    =================================================================== */
+  it('it should return true  Plus sign is considered valid character ', function () {
+    function emailValidator(control) {
+      /*run real test */
+
+
+      if (control||control.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
+        return null;
+      } else {
+         return { 'invalidEmailAddress': true };
+      }
+    }
+    expect(emailValidator("firstname+lastname@domain.com")).toBe(null);/* Not true x is 5 so return null */
+  });
+  
+  /**================================================================ *
      * Email Validation test cases
     =================================================================== */
   //1. email@domain.com	 is  Valid email
