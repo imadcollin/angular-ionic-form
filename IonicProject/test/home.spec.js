@@ -66,7 +66,7 @@ it('it should return true domain name is valid', function () {
 /**================================================================ *
 //4. irstname-lastname@domain.com	Dash in address field is valid
 =================================================================== */
-it('it should return true Dash in address field is valid',function () {
+it('it should return true Dash in address field is valid', function () {
   function emailValidator(control) {
     /*run real test */
 
@@ -82,12 +82,12 @@ it('it should return true Dash in address field is valid',function () {
 /**================================================================ *
 //5. 1234567890@domain.com	Digits in address are valid
 =================================================================== */
-it('it should return true Digits in address are valid',function () {
+it('it should return true Digits in address are valid', function () {
   function emailValidator(control) {
     /*run real test */
 
 
-    if (control || control.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
+    if (control.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
       return null;
     } else {
       return { 'invalidEmailAddress': true };
@@ -96,24 +96,26 @@ it('it should return true Digits in address are valid',function () {
   expect(emailValidator("1234567890@domain.com")).toBe(null);/* Not true x is 5 so return null */
 });
 
+//---- Email Not Valid Test Cases 
 
-  /**================================================================ *
-     * Email Validation test cases
-    =================================================================== */
-  //1. email@domain.com	 is  Valid email
-  //2. firstname+lastname@domain.com	Plus sign is considered valid character
-  //3. email@domain-one.com	Dash in domain name is valid
-  //4. irstname-lastname@domain.com	Dash in address field is valid
-  //5. 1234567890@domain.com	Digits in address are valid
+/**================================================================ *
+//All cases for not valid / correct 
+=================================================================== */
+it('it should return false Missing @ sign and domain', function () {
+  function emailValidator(control) {
+    if (control.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
+      return null;
+    } else {
+      return { 'invalidEmailAddress': true };
+    }
+  }
+  expect(emailValidator("").invalidEmailAddress).toBe(true); //2. @domain.com	Missing username
+  expect(emailValidator("@domain.com").invalidEmailAddress).toBe(true); // 3.email.domain.com	Missing 
+  expect(emailValidator("email.domain.com").invalidEmailAddress).toBe(true);  //4. email..email@domain.com	Multiple dots
+  expect(emailValidator("email@domain..com").invalidEmailAddress).toBe(true);  //5. email@domain..com	Multiple dot in the domain portion is invalid
+});
 
-  /**================================================================ *
-     * Email Not valid  test cases
-    =================================================================== */
-  //1. plainaddress	Missing @ sign and domain
-  //2. @domain.com	Missing username
-  //3. email.domain.com	Missing @
-  //4. email..email@domain.com	Multiple dots
-  //5. email@domain..com	Multiple dot in the domain portion is invalid
+
 
 
 
