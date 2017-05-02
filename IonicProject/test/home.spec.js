@@ -43,7 +43,36 @@ it('it should return false Missing @ sign and domain', function () {
   expect(emailValidator("email@domain..com").invalidEmailAddress).toBe(true);  //5. email@domain..com	Multiple dot in the domain portion is invalid
 });
 
-
+/**================================================================ *
+  --------------PASSWORD VALIDATION TESTING----------------------
+=================================================================== */
+it('it should return true Valid Password  ', function () {
+   function passwordValidator(control) {
+        if (control.match(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,100}$/)) {
+            return null;
+        } else {
+            return { 'invalidPassword': true };
+        }
+    }
+  expect(passwordValidator("abcdABCD1")).toBe(null); 
+  expect(passwordValidator("123abcd")).toBe(null); 
+  expect(passwordValidator("ABCD1234abcd")).toBe(null); 
+});
+/**================================================================ *
+  ---Not Valid Cases 
+=================================================================== */
+it('it should return false Valid Password  ', function () {
+   function passwordValidator(control) {
+        if (control.match(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,100}$/)) {
+            return null;
+        } else {
+            return { 'invalidPassword': true };
+        }
+    }
+  expect(passwordValidator("abcd").invalidPassword).toBe(true); 
+  expect(passwordValidator("12345").invalidPassword).toBe(true); 
+  expect(passwordValidator("ABCD").invalidPassword).toBe(true); 
+});
 
 
 
