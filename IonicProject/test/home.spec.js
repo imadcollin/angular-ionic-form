@@ -46,7 +46,23 @@ it('it should return true  Valid email  ', function () {
     }
     expect(emailValidator("firstname+lastname@domain.com")).toBe(null);/* Not true x is 5 so return null */
   });
-  
+
+    /**================================================================ *
+    // email@domain-one.com	Dash in domain name is valid
+    =================================================================== */
+  it('it should return true domain name is valid', function () {
+    function emailValidator(control) {
+      /*run real test */
+
+
+      if (control||control.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
+        return null;
+      } else {
+         return { 'invalidEmailAddress': true };
+      }
+    }
+    expect(emailValidator("email@domain-one.com")).toBe(null);/* Not true x is 5 so return null */
+  });
   /**================================================================ *
      * Email Validation test cases
     =================================================================== */
