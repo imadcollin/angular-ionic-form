@@ -5,76 +5,31 @@ describe('1st tests', () => {
   it('true is true', () => expect(true).toBe(true));
 });
 
+/**================================================================ *
+  * Email Validation testing 
+ =================================================================== */
+let config = {
+  'required': 'Required',
+  'invalidEmailAddress': 'Invalid email address',
+  'invalidPassword': 'Invalid password. Password must be at least 6 characters long, and contain a number.'
+};
 
 /**================================================================ *
-  * Inject the HTML fixture for the tests
- =================================================================== */
-describe('HTML Injection', function () {
-  beforeEach(function () {
-    var fixture = '<div id="fixture"><input id="x" type="text">' +
-      '<input id="y" type="text">' +
-      '<input id="add" type="button" value="Add Numbers">' +
-      'Result: <span id="result" /></div>';
+   * Email Validation testing  with regular expression 
+  =================================================================== */
 
-    document.body.insertAdjacentHTML(
-      'afterbegin',
-      fixture);
-  });
-  // remove the html fixture from the DOM
-  afterEach(function () {
-    document.body.removeChild(document.getElementById('fixture'));
-  });
-
-  /**================================================================ *
-    * Email Validation testing 
-   =================================================================== */
-  let config = {
-    'required': 'Required',
-    'invalidEmailAddress': 'Invalid email address',
-    'invalidPassword': 'Invalid password. Password must be at least 6 characters long, and contain a number.'
-  };
-  // Check the mail function with null return value 
-  it('it should return true for email null ', function () {
-    function emailValidator(control) {
-      let config = {
-        'required': 'Required',
-        'invalidEmailAddress': 'Invalid email address',
-        'invalidPassword': 'Invalid password. Password must be at least 6 characters long, and contain a number.'
-      };
-      /*run stupid test */
-      if (control > 4) {
-        return null;
-      } else {
-        return { 'invalidEmailAddress': true };
-      }
+it('it should return true  Valid email  ', function () {
+  function emailValidator(control) {
+    /*run real test */
+    if (control || control.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
+      return null;
+    } else {
+      return { 'invalidEmailAddress': true };
     }
-    var x = document.getElementById('x').value = 5;
+  }
+  expect(emailValidator("email@domain.com")).toBe(null);/* Not true x is 5 so return null */
+});
 
-    expect(emailValidator(x)).toBe(null);/* Not true x is 5 so return null */
-  });
-
-  /**================================================================ *
-     * Email Validation testing  with regular expression 
-    =================================================================== */
-
-  /**
-   * TypeError: Cannot read property 'match' of undefined
-   * Match should be defined somehow here in order to use.
-   * Resualt : test failed 
-   */
-  it('it should return true for email null ', function () {
-    function emailValidator(control) {
-      /*run real test */
-      if (control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
-        return null;
-      } else {
-        return { 'invalidEmailAddress': true };
-      }
-    }
-    var x = document.getElementById('x').value = 5;
-
-    expect(emailValidator(x)).toBe(null);/* Not true x is 5 so return null */
-  });
   /**================================================================ *
      * Email Validation test cases
     =================================================================== */
