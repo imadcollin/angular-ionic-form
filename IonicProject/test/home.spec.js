@@ -1,18 +1,7 @@
 /**================================================================ *
  * This is an initial test for Home page logic 
 =================================================================== */
-describe('1st tests', () => {
-  it('true is true', () => expect(true).toBe(true));
-});
 
-/**================================================================ *
-  * Email Validation testing 
- =================================================================== */
-let config = {
-  'required': 'Required',
-  'invalidEmailAddress': 'Invalid email address',
-  'invalidPassword': 'Invalid password. Password must be at least 6 characters long, and contain a number.'
-};
 
 /**================================================================ *
    * Email Validation testing  with regular expression 
@@ -27,73 +16,12 @@ it('it should return true  Valid email  ', function () {
       return { 'invalidEmailAddress': true };
     }
   }
-  expect(emailValidator("email@domain.com")).toBe(null);/* Not true x is 5 so return null */
-});
+  expect(emailValidator("firstname+lastname@domain.com")).toBe(null);  //2.Plus sign is considered valid character
+  expect(emailValidator("email@domain.com")).toBe(null); //3.Dash in domain name is valid Dash in address field is valid
+  expect(emailValidator("email@domain-one.com")).toBe(null);//4.Dash in domain name is valid 
+  expect(emailValidator("irstname-lastname@domain.com")).toBe(null);
+  expect(emailValidator("1234567890@domain.com")).toBe(null);//Digits in address are valid
 
-/**================================================================ *
-  //2. firstname+lastname@domain.com	Plus sign is considered valid character
-  =================================================================== */
-it('it should return true  Plus sign is considered valid character ', function () {
-  function emailValidator(control) {
-    /*run real test */
-
-
-    if (control || control.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
-      return null;
-    } else {
-      return { 'invalidEmailAddress': true };
-    }
-  }
-  expect(emailValidator("firstname+lastname@domain.com")).toBe(null);/* Not true x is 5 so return null */
-});
-
-/**================================================================ *
-// email@domain-one.com	Dash in domain name is valid
-=================================================================== */
-it('it should return true domain name is valid', function () {
-  function emailValidator(control) {
-    /*run real test */
-
-
-    if (control || control.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
-      return null;
-    } else {
-      return { 'invalidEmailAddress': true };
-    }
-  }
-  expect(emailValidator("email@domain-one.com")).toBe(null);/* Not true x is 5 so return null */
-});
-/**================================================================ *
-//4. irstname-lastname@domain.com	Dash in address field is valid
-=================================================================== */
-it('it should return true Dash in address field is valid', function () {
-  function emailValidator(control) {
-    /*run real test */
-
-
-    if (control || control.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
-      return null;
-    } else {
-      return { 'invalidEmailAddress': true };
-    }
-  }
-  expect(emailValidator("irstname-lastname@domain.com")).toBe(null);/* Not true x is 5 so return null */
-});
-/**================================================================ *
-//5. 1234567890@domain.com	Digits in address are valid
-=================================================================== */
-it('it should return true Digits in address are valid', function () {
-  function emailValidator(control) {
-    /*run real test */
-
-
-    if (control.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
-      return null;
-    } else {
-      return { 'invalidEmailAddress': true };
-    }
-  }
-  expect(emailValidator("1234567890@domain.com")).toBe(null);/* Not true x is 5 so return null */
 });
 
 //---- Email Not Valid Test Cases 
