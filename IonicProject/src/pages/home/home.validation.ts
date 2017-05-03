@@ -1,6 +1,6 @@
 //import mail check from mailcheck library 
-let mailcheck = require('mailcheck');
-
+// let mailcheck = require('mailcheck');
+import { mailcheck } from 'mailcheck';
 export class FormValidation {
     public warning_message: Boolean;
     private _sg: string; //suggestion property
