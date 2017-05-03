@@ -79,12 +79,32 @@ npm test
 *  npm install -g ios-sim version
 
 
+##  Bugs *Typo and Suggestions*
+for this requirement, the used library called mailcheck. 
+
+### mailcheck.js
+>  The Javascript library and jQuery plugin that suggests a right domain when 
+>  your  users misspell it in an email address.
+
+
+#### 
+How it works:
+> When your user types in "user@gmil.con", Mailcheck will suggest "user@gmail.com".
+
+
+https://github.com/mailcheck/mailcheck 
+
 ## Project Interface 
 
-<img width="105" alt="screen shot 2017-02-24 at 17 16 10" src="https://cloud.githubusercontent.com/assets/15781725/25555116/7dedbfe0-2cde-11e7-8dcf-f6e8f4f7dd16.png">
-<img width="105" alt="screen shot 2017-02-24 at 17 16 10" src="https://cloud.githubusercontent.com/assets/15781725/25555119/8a3e8ab8-2cde-11e7-9778-0c99cbb67110.png">
+<img width="105" alt="screen shot 2017-02-24 at 17 16 10" src="https://cloud.githubusercontent.com/assets/15781725/25649496/4ac53210-2fd6-11e7-9d36-2670a598790f.png">
+<img width="105" alt="screen shot 2017-02-24 at 17 16 10" src="https://cloud.githubusercontent.com/assets/15781725/25649514/65b49eb2-2fd6-11e7-89d6-e3729619461d.png">
 ---
-<img width="105" alt="screen shot 2017-02-24 at 17 16 10" src="https://cloud.githubusercontent.com/assets/15781725/25555122/927a7822-2cde-11e7-8711-ad3da2f7a78a.png">
-<img width="105" alt="screen shot 2017-02-24 at 17 16 40" src="https://cloud.githubusercontent.com/assets/15781725/25555125/9e845458-2cde-11e7-97d3-24b557a17293.png">
+<img width="105" alt="screen shot 2017-02-24 at 17 16 10" src="https://cloud.githubusercontent.com/assets/15781725/25649532/7ea6422c-2fd6-11e7-9ae9-73306f077c65.png">
+<img width="105" alt="screen shot 2017-02-24 at 17 16 40" src="https://cloud.githubusercontent.com/assets/15781725/25649540/98e28fec-2fd6-11e7-9fe1-53294ac71a9f.png">
 ---
-<img width="102" alt="screen shot 2017-02-24 at 17 18 03" src="https://cloud.githubusercontent.com/assets/15781725/25555127/a7a84e4a-2cde-11e7-90e4-46717929ad8b.png">
+<img width="102" alt="screen shot 2017-02-24 at 17 18 03" src="https://cloud.githubusercontent.com/assets/15781725/25649558/b38974d2-2fd6-11e7-8646-672f564b82c0.png">
+<img width="102" alt="screen shot 2017-02-24 at 17 18 03" src="https://cloud.githubusercontent.com/assets/15781725/25649562/c8180dc8-2fd6-11e7-9a4c-d1aff3ce57cb.png">
+
+## Simple test result
+<img width="102" alt="screen shot 2017-02-24 at 17 18 03" src="https://cloud.githubusercontent.com/assets/15781725/25649644/9826af24-2fd7-11e7-838d-c2839d8ec574.png">
+
