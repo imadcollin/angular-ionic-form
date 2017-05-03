@@ -2,29 +2,48 @@
 let mailcheck = require('mailcheck');
 
 export class FormValidation {
+    public warning_message: Boolean;
+    private _sg: string; //suggestion property
+    //getter and setter 
+    get sg(): string {
+        return this._sg;
+    }
+    set sg(sug: string) { // set suggestion method
+        this._sg = sug;
+    }
+    static f = new FormValidation();
+
 
     static emailValidator(control) {
-      
+
         var domains = ['gmail.com', 'aol.com'];
         var secondLevelDomains = ['hotmail']
         var topLevelDomains = ["com", "net", "org"];
 
-        if (!control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)){
-            
+        if (!control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
+
             return { 'invalidEmailAddress': true };
         }
-          if(mailcheck.run({
-                email: control.value,
-                domains: domains,                       // optional
-                topLevelDomains: topLevelDomains,       // optional
-                secondLevelDomains: secondLevelDomains, // optional
+        if (!mailcheck.run({
+            email: control.value,
+            domains: domains,                       // optional
+            topLevelDomains: topLevelDomains,       // optional
+            secondLevelDomains: secondLevelDomains, // optional
+            suggested: function (element, suggestion) {
+                FormValidation.f.sg = element.full;
+                FormValidation.f.warning_message = false;
 
-            })) 
-            return{  'typeoError': true}
+            },
+            empty: function (element) {
+                FormValidation.f.warning_message = true;
+            }
 
-            else
-                return null; 
-            
+        }) && FormValidation.f.sg != undefined && FormValidation.f.warning_message != true
+        ) {
+            return { 'suggestions': true };
+        }
+        return null;
+
     }
 
     static passwordValidator(control) {
@@ -41,7 +60,7 @@ export class FormValidation {
             'required': 'Required',
             'invalidEmailAddress': 'Invalid email address',
             'typeoError': 'Invaalid typeo please provide correct typo',
-
+            'suggestions': 'Oh!! Please check the typo it should be:' + FormValidation.f.sg,
             'invalidPassword': 'Invalid password. Password must be at least 6 characters long, and contain a number.',
             'minlength': `Minimum length ${validatorValue.requiredLength}`
         };
